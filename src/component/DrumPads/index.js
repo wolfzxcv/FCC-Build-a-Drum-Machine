@@ -1,45 +1,45 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components' 
 
-const DrumPads = () => {
+const DrumPads = ({id, letter, audio, src, handleClick, handleDisplay, handleKeydown}) => {
 
 useEffect(() =>  {
-       console.log(this.audio)
-       document.addEventListener('keydown', this.handleKeydown)
+       console.log(audio)
+       document.addEventListener('keydown', handleKeydown)
        window.focus()
        });
-
+ 
 useEffect(() => {
        return () => {
-        document.removeEventListener('keydown', this.handleKeydown);
+        document.removeEventListener('keydown', handleKeydown)
        }
-     }, []);
+     }, []);   
 
 handleKeydown = e => {
-if(e.keyCode === this.props.letter.charCodeAt()) {
-this.audio.play()
-this.audio.currentTime = 0
-this.props.handleDisplay(this.props.id)
+if(e.keyCode === letter.charCodeAt()){
+audio.currentTime = 0
+audio.play()     
+handleDisplay(id)
 }
 }
 
 handleClick = () => {
-this.audio.play()
-this.audio.currentTime = 0
-this.props.handleDisplay(this.props.id)
+audio.play()
+audio.currentTime = 0
+handleDisplay(id)
 }
 
 return (
 <div 
        className='drum-pad' 
-       id={this.props.id}
-       onClick={this.handleClick}
+       id={id}
+       onClick={handleClick}
 >
-<h1>{this.props.letter}</h1>
-<audio id={this.props.letter}
+<h1>{letter}</h1>
+<audio id={letter}
        className='clip'
-       src={this.props.src}
-       ref={ref => this.audio = ref}
+       src={src}
+       ref={ref => audio = ref}
        ></audio>
 </div>
 )
