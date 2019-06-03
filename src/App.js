@@ -1,16 +1,13 @@
 import React from 'react' 
 import styled from 'styled-components' 
-import Display from './component/Display'
+import Display from '../src/component/Display'
 
-
-const App =() => (
-   <React.Fragment>
-    <DrumMachine id="drum-machine">    
-    <Display/>
-    </DrumMachine>
-   </React.Fragment>
-  );
-
+const App =() =>(
+  <DrumMachine id='drum-machine'>
+  <Display/>  
+  </DrumMachine>  
+)
+ 
 const DrumMachine = styled.div`
   height: 100vh;
   display: flex;
@@ -18,7 +15,6 @@ const DrumMachine = styled.div`
   justify-content: space-around;
   align-items: center;
   background-color:	#D2B48C;
-  font-size: 36px;
   font-family: cursive;
 `
 export default App;
