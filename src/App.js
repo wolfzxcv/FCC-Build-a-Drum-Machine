@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react' 
+import styled from 'styled-components' 
+import Display from './component/Display'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+const App =() => (
+   <React.Fragment>
+    <DrumMachine id="drum-machine">    
+    <Display/>
+    </DrumMachine>
+   </React.Fragment>
   );
-}
 
+const DrumMachine = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-around;
+  align-items: center;
+  background-color:	#D2B48C;
+  font-size: 36px;
+  font-family: cursive;
+`
 export default App;
