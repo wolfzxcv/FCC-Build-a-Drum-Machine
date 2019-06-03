@@ -5,7 +5,7 @@ import DrumPads from '../DrumPads'
 const Display = () => {
   const [display, setDisplay] = useState('Click or Press a Key')
   
-  const handleDisplay = () => setDisplay( display )
+  const handleDisplay = display => setDisplay( display )
   
     return(
         <React.Fragment> 

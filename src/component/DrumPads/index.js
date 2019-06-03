@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components' 
-class DrumPads extends React.Component {
 
-componentDidMount() {
-console.log(this.audio)
-document.addEventListener('keydown', this.handleKeydown)
-window.focus()
-}
+const DrumPads = () => {
 
-componentWillUnmount() {
-document.removeEventListener('keydown', this.handleKeydown)
-}
+useEffect(() =>  {
+       console.log(this.audio)
+       document.addEventListener('keydown', this.handleKeydown)
+       window.focus()
+       });
+
+useEffect(() => {
+       return () => {
+        document.removeEventListener('keydown', this.handleKeydown);
+       }
+     }, []);
 
 handleKeydown = e => {
 if(e.keyCode === this.props.letter.charCodeAt()) {
@@ -26,7 +29,6 @@ this.audio.currentTime = 0
 this.props.handleDisplay(this.props.id)
 }
 
-render() {
 return (
 <div 
        className='drum-pad' 
@@ -41,7 +43,7 @@ return (
        ></audio>
 </div>
 )
-}
+
 }
                    
 
