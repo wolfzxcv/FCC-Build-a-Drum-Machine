@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const DrumPads = ({id, letter, audio, src, handleClick, handleDisplay, handleKeydown}) => {
 
 useEffect(() =>  {
-       console.log(audio)
+       console.log(audio.id)
        document.addEventListener('keydown', handleKeydown)
        window.focus()
        });
@@ -16,10 +16,10 @@ useEffect(() => {
      }, []);   
 
 handleKeydown = e => {
-if(e.keyCode === letter.charCodeAt()){
-audio.currentTime = 0
-audio.play()     
-handleDisplay(id)
+if(e.keyCode === letter.charCodeAt()) {
+ audio.play()
+ audio.currentTime = 0
+ handleDisplay(id)
 }
 }
 
@@ -30,7 +30,7 @@ handleDisplay(id)
 }
 
 return (
-<div 
+<Pads 
        className='drum-pad' 
        id={id}
        onClick={handleClick}
@@ -41,10 +41,20 @@ return (
        src={src}
        ref={ref => audio = ref}
        ></audio>
-</div>
+</Pads>
 )
 
 }
                    
+
+const Pads = styled.div`
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ margin: 1em;
+ height: 10vh;
+ width:5vw;
+ border: 1px solid gray;
+`
 
 export default DrumPads;
