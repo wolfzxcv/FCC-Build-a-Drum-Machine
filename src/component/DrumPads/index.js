@@ -1,31 +1,31 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components' 
 
-const DrumPads = ({id, letter, audio, src, handleClick, handleDisplay, handleKeydown}) => {
+const DrumPads = ({id, letter, src, handleClick, handleDisplay, handleKeydown}) => {
+
+const audio = React.useRef(null);
 
 useEffect(() =>  {
        console.log(audio.id)
        document.addEventListener('keydown', handleKeydown)
        window.focus()
-       });
- 
-useEffect(() => {
        return () => {
-        document.removeEventListener('keydown', handleKeydown)
-       }
-     }, []);   
+              document.removeEventListener('keydown', handleKeydown)
+             }
+           }, []); 
+   
 
 handleKeydown = e => {
 if(e.keyCode === letter.charCodeAt()) {
- audio.play()
- audio.currentTime = 0
+ audio.current.play()
+ audio.current.currentTime = 0
  handleDisplay(id)
 }
 }
 
 handleClick = () => {
-audio.play()
-audio.currentTime = 0
+audio.current.play()
+audio.current.currentTime = 0
 handleDisplay(id)
 }
 
@@ -39,7 +39,7 @@ return (
 <audio id={letter}
        className='clip'
        src={src}
-       ref={ref => audio = ref}
+       ref={audio}
        ></audio>
 </Pads>
 )
@@ -55,6 +55,7 @@ const Pads = styled.div`
  height: 10vh;
  width:5vw;
  border: 1px solid gray;
+ background-color: #F0E68C;
 `
 
 export default DrumPads;
